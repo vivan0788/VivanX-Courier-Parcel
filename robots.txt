@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vivan0788.github.io/VivanX-Courier-Parcel//sitemap.xml
