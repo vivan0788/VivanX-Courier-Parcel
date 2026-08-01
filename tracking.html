@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Parcel | VivanX Courier Parcel</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="scroll-progress"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">📦 VivanX</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="tracking.html" class="active">Tracking</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle">🌙</button>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Live Parcel Tracker</h1>
+    <p>Track your shipment status in real time across our secure logistics network.</p>
+    
+    <form id="tracking-form" class="search-box">
+      <input type="text" id="tracking-input" placeholder="Try ID: VVX100001, VVX100002..." required>
+      <button type="submit" class="btn btn-primary">Track</button>
+    </form>
+  </section>
+
+  <section class="section tracking-container">
+    <div id="tracking-result">
+      </div>
+  </section>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2026 VivanX Courier Parcel. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/tracking.js"></script>
+</body>
+</html>
