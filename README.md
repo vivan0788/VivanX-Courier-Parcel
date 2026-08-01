@@ -71,7 +71,7 @@ vivanx-courier/
 
 1. Clone the repository
 
-git clone https://github.com/your-username/vivanx-courier.git
+git clone https://github.com/vivan0788/vivanx-courier.git
 
 2. Open the project folder.
 
