@@ -1,0 +1,431 @@
+/* ==========================================
+   1. CORE VARIABLES & THEMES
+   ========================================== */
+:root {
+  /* Brand Palette */
+  --primary: #0a84ff;
+  --primary-hover: #0066cc;
+  --secondary: #111827;
+  --accent: #22c55e;
+  --accent-hover: #16a34a;
+  
+  /* Theme Colors (Light Default) */
+  --bg-main: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-nav: rgba(255, 255, 255, 0.9);
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --border-color: #e2e8f0;
+  --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  
+  /* Typography & Layout */
+  --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --transition: all 0.3s ease;
+  --radius: 12px;
+}
+
+[data-theme="dark"] {
+  --bg-main: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.85);
+  --bg-nav: rgba(15, 23, 42, 0.9);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================
+   2. RESET & BASE STYLES
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Scroll Progress Bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: var(--primary);
+  width: 0%;
+  z-index: 1001;
+  transition: width 0.1s ease;
+}
+
+/* ==========================================
+   3. NAVIGATION
+   ========================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--bg-nav);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-links a.active, .nav-links a:hover {
+  color: var(--primary);
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--text-main);
+  padding: 0.5rem;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-main);
+  transition: var(--transition);
+}
+
+/* ==========================================
+   4. HERO & SEARCH SECTION
+   ========================================== */
+.hero {
+  padding: 6rem 5% 4rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(10, 132, 255, 0.05) 0%, rgba(34, 197, 94, 0.05) 100%);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+}
+
+.search-box {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  padding: 0.5rem;
+  border-radius: 50px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.8rem 1.5rem;
+  outline: none;
+  color: var(--text-main);
+  font-size: 1rem;
+}
+
+.btn {
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   5. GRID & GLASSMORPHISM CARDS
+   ========================================== */
+.section {
+  padding: 5rem 5%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* ==========================================
+   6. TRACKING SYSTEM STYLES
+   ========================================== */
+.tracking-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.timeline {
+  position: relative;
+  margin-top: 2rem;
+  padding-left: 2rem;
+  border-left: 3px solid var(--border-color);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.6rem;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--border-color);
+}
+
+.timeline-item.active::before {
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* ==========================================
+   7. FAQ ACCORDION
+   ========================================== */
+.accordion {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.accordion-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.accordion-header {
+  padding: 1.2rem;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-body {
+  padding: 0 1.2rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  color: var(--text-muted);
+}
+
+.accordion-item.active .accordion-body {
+  padding: 0 1.2rem 1.2rem 1.2rem;
+  max-height: 200px;
+}
+
+/* ==========================================
+   8. FOOTER & FLOATING BUTTONS
+   ========================================== */
+footer {
+  background: var(--secondary);
+  color: #f8fafc;
+  padding: 4rem 5% 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+}
+
+.floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  font-size: 1.5rem;
+  z-index: 999;
+}
+
+#back-to-top {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: var(--primary);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  z-index: 999;
+}
+
+/* ==========================================
+   9. RESPONSIVE MEDIA QUERIES
+   ========================================== */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-nav);
+    flex-direction: column;
+    padding: 2rem;
+    display: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .search-box {
+    flex-direction: column;
+    border-radius: var(--radius);
+  }
+  
+  .search-box input {
+    text-align: center;
+  }
+  }
